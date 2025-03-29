@@ -1,3 +1,5 @@
+import Onboarding from "@/components/onboarding/onboarding";
+
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import Cards from "./cards";
@@ -8,7 +10,7 @@ const OverviewPage = () => {
   return (
     <div className="w-full">
       {/* component header */}
-      <div className="flex items-center justify-between border-b border-[#D4D4D4] px-6 pt-4 pb-2">
+      <div className="flex items-center justify-between border-b border-[#D4D4D4] px-6 pb-2 pt-4">
         <div>
           <h2 className="text-[20px] font-bold text-[#001213]">overview</h2>
           <p className="text-sm text-[#4D595A]">

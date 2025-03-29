@@ -51,10 +51,10 @@ const SignUpForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="pb-20">
-      <div className="mb-10 grid gap-4">
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="space-y-4">
         <div>
-          <Label className="mb-0.5 text-[##0A0A0A]">
+          <Label className="mb-0.5 text-[#0A0A0A]">
             Email address <span className="text-[#DC2626]">*</span>
           </Label>
           <Input
@@ -77,7 +77,7 @@ const SignUpForm = () => {
         </div>
 
         <div>
-          <Label className="mb-0.5 text-[##0A0A0A]">
+          <Label className="mb-0.5 text-[#0A0A0A]">
             Password <span className="text-[#DC2626]">*</span>
           </Label>
           <Input
