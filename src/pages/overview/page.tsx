@@ -4,6 +4,7 @@ import { PlusCircle } from "lucide-react";
 import Cards from "./cards";
 import { DataTable } from "./table/data-table";
 import { columns } from "./table/columns";
+import BarChatComponent from "@/components/charts/bar-chat";
 
 const OverviewPage = () => {
   return (
@@ -13,7 +14,7 @@ const OverviewPage = () => {
         {/* component header */}
         <div className="flex items-center justify-between border-b border-[#D4D4D4] px-6 pt-4 pb-2">
           <div>
-            <h2 className="text-[20px] font-bold text-[#001213]">overview</h2>
+            <h2 className="text-[20px] font-bold text-[#001213]">Overview</h2>
             <p className="text-sm text-[#4D595A]">
               Overview of your business performance and metrics.
             </p>
@@ -31,6 +32,13 @@ const OverviewPage = () => {
         </div>
 
         <Cards />
+
+        <div className="grid grid-cols-3 gap-3 px-6">
+          <div className="col-span-2">
+            <BarChatComponent />
+          </div>
+          <div></div>
+        </div>
 
         <div className="px-6">
           <DataTable

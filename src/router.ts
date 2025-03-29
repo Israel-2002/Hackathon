@@ -5,6 +5,9 @@ import OverviewPage from "@/pages/overview/page";
 import { createBrowserRouter, redirect } from "react-router";
 
 import PageLayout from "./components/page-layout";
+import BusinessInsights from "@/pages/business-insights/business-insights";
+import FinancialMetrics from "@/pages/business-insights/metrics/financial-metrics";
+import AiAnalysis from "@/pages/business-insights/smart-safe-index/ai-analysis";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +17,20 @@ export const router = createBrowserRouter([
       {
         path: "",
         Component: OverviewPage,
+      },
+      {
+        path: "/insights",
+        Component: BusinessInsights,
+        children: [
+          {
+            index: true,
+            Component: FinancialMetrics,
+          },
+          {
+            path: "business-credibility",
+            Component: AiAnalysis,
+          },
+        ],
       },
     ],
 
