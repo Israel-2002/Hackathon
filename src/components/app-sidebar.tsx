@@ -10,7 +10,7 @@ import {
   Settings,
 } from "lucide-react";
 import { useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, redirect, useLocation, useNavigate } from "react-router";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const links = [
@@ -43,9 +43,16 @@ const links = [
 
 export function AppSidebar() {
   const location = useLocation();
-  const currentPath = location.pathname;
-
   const [isCardShowing, setIsCardShowing] = useState(false);
+  const currentPath = location.pathname;
+  const navigate = useNavigate();
+
+  function logOut() {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("/auth/signin");
+  }
+
   return (
     <Sidebar className="flex w-[240px] flex-col border-r border-[#F5F5F5]">
       {/* header */}
@@ -81,7 +88,7 @@ export function AppSidebar() {
           />
         </div>
         <div
-          className={`${isCardShowing ? "translate-y-0" : "translate-y-[300px]"} shadow-wide-down absolute bottom-20 left-6 z-20 flex w-[192px] flex-col gap-3 overflow-hidden rounded-[8px] bg-white px-2 py-2 transition duration-300`}
+          className={`${isCardShowing ? "translate-y-0" : "translate-y-[300px]"} shadow-wide-down absolute bottom-16 left-6 z-20 flex w-[192px] flex-col gap-3 overflow-hidden rounded-[8px] bg-white px-2 py-2 transition duration-300`}
         >
           <div className="flex items-center gap-2">
             <Avatar className="size-6">
@@ -99,7 +106,9 @@ export function AppSidebar() {
           <div className="flex items-center gap-2 text-[#D11100]">
             <LogOut size={18} />
 
-            <p className="cursor-pointer text-xs">Log out</p>
+            <p className="cursor-pointer text-xs" onClick={() => logOut()}>
+              Log out
+            </p>
           </div>
         </div>
       </div>
