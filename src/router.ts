@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
         Component: ForgotPasswordPage,
       },
       {
-        path: "set-password",
+        path: "set-password/:token",
         Component: SetPasswordPage,
       },
     ],

@@ -89,8 +89,8 @@ export default ForgotPasswordForm;
 const MotionItem: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
       transition={{
         duration: 0.5,
       }}
