@@ -5,9 +5,15 @@ import OverviewPage from "@/pages/overview/page";
 import { createBrowserRouter } from "react-router";
 import ForgotPasswordPage from "./pages/auth/forgot-password/page";
 import SetPasswordPage from "./pages/auth/set-password/page";
+import PageLayout from "./components/page-layout";
 
 export const router = createBrowserRouter([
-  { path: "/", Component: OverviewPage },
+  {
+    path: "/",
+    Component: PageLayout,
+    children: [{ path: "", Component: OverviewPage }],
+  },
+
   {
     path: "/auth",
     Component: AuthLayout,
