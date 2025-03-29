@@ -18,7 +18,7 @@ const Self = () => {
   } = useFormContext<FormFields>();
 
   const businessType = watch("business_type");
-  const industrySector = watch("industry_sector");
+  const industrySector = watch("industry");
 
   return (
     <div className="grid gap-6">
@@ -87,24 +87,26 @@ const Self = () => {
         ]}
         value={industrySector}
         onChange={(value) => {
-          setValue("industry_sector", value);
-          trigger("industry_sector");
+          setValue("industry", value);
+          trigger("industry");
         }}
-        error={errors.industry_sector}
+        error={errors.industry}
       />
 
       <DatePicker
         label="Established date"
         required
         onChange={(value) => {
-          setValue("established_date", value);
-          trigger("established_date");
+          setValue("registration_date", value);
+          trigger("registration_date");
         }}
-        error={errors.established_date}
+        error={errors.registration_date}
       />
 
       <div>
-        <Label className="mb-0.5 text-[##0A0A0A]">Location (optional)</Label>
+        <Label className="mb-0.5 text-[##0A0A0A]">
+          Location <span className="text-[#DC2626]">*</span>
+        </Label>
         <Input
           {...register("location", { required: true })}
           placeholder="Enter location"
@@ -125,10 +127,10 @@ const Self = () => {
 
       <div>
         <Label className="mb-0.5 text-[##0A0A0A]">
-          Number of Employees (optional){" "}
+          Number of Employees <span className="text-[#DC2626]">*</span>
         </Label>
         <Input
-          {...register("location", { required: true })}
+          {...register("no_of_employees", { required: true })}
           type="number"
           placeholder="0"
           className={cn(

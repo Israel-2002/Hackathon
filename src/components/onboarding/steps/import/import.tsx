@@ -5,7 +5,7 @@ import { Trash2 } from "lucide-react";
 import { useFormContext } from "react-hook-form";
 
 const Import = () => {
-  const { inputRef, progress, handleFileChange } = useUpload();
+  const { inputRef, handleFileChange, pdfFiles } = useUpload();
   const { watch, setValue } = useFormContext<FormFields>();
 
   const files = watch("files") as File[] | undefined;
@@ -22,16 +22,15 @@ const Import = () => {
       <Fileupload
         files={files}
         inputRef={inputRef}
-        progress={progress}
         handleFileChange={handleFileChange}
       />
 
-      {files && files.length > 0 && (
+      {pdfFiles && pdfFiles.length > 0 && (
         <div className="mt-7">
           <p className="font-semibold text-[#667185]">Uploaded files</p>
           <ul className="mt-6 grid gap-6">
-            {files &&
-              files.map((file: File, index: number) => (
+            {pdfFiles &&
+              pdfFiles.map((file: File, index: number) => (
                 <li
                   key={index}
                   className="mt-2 flex items-center justify-between gap-4 border-b pb-6 last:border-b-transparent"

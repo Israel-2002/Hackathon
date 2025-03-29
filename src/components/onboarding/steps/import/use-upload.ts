@@ -1,45 +1,45 @@
-import { FormFields } from "@/components/onboarding/use-onboarding";
+import axios from "axios";
 import { ChangeEvent, useRef, useState } from "react";
-import { useFormContext } from "react-hook-form";
+
+const apiUrl = import.meta.env.VITE_BACKEND_BASE_URL;
+
+async function uploadFile(file: File) {
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const res = await axios.post(`${apiUrl}/uploads/upload_csv`, formData);
+
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 const useUpload = () => {
-  const [progress, setProgress] = useState(0);
-
-  const { setValue } = useFormContext<FormFields>();
-
+  const [pdfFiles, setPdfFiles] = useState<File[]>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const progressIntervalRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
-  const fakeProgressLoader = (complete: () => void) => {
-    let progressValue = 0;
-
-    progressIntervalRef.current = setInterval(() => {
-      progressValue += Math.random() * 15;
-      if (progressValue > 100) progressValue = 100;
-      setProgress(progressValue);
-
-      if (progressValue >= 100) {
-        clearInterval(progressIntervalRef.current);
-        complete();
-        sessionStorage.setItem("progress", JSON.stringify(progressValue));
-      }
-    }, 200);
-  };
-
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
 
     if (files && files.length > 0) {
-      fakeProgressLoader(() => {
-        setValue("files", Array.from(files))
-      });
+      setPdfFiles(Array.from(files));
+
+      const res = await uploadFile(files[0]);
+      const fileData = {
+        file_name: pdfFiles[0].name,
+        file_url: res.url,
+      };
+
+      localStorage.setItem("uploadedFiles", JSON.stringify([fileData]));
     }
   };
 
   return {
     inputRef,
-    progress,
     handleFileChange,
+    pdfFiles,
   };
 };
 

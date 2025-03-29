@@ -2,6 +2,7 @@ import Header from "@/components/onboarding/header";
 import useOnboarding from "@/components/onboarding/use-onboarding";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Loader } from "lucide-react";
 import { FormProvider } from "react-hook-form";
 
 const Onboarding = () => {
@@ -13,6 +14,7 @@ const Onboarding = () => {
     onSubmit,
     onBack,
     isLastStep,
+    isLoading,
   } = useOnboarding();
 
   return (
@@ -37,8 +39,15 @@ const Onboarding = () => {
                   Skip
                 </Button>
               )}
-              <Button className="mt-6 h-[56px] w-full rounded-full bg-[#FC6060] text-white hover:bg-[#FC6060]/90">
-                Continue
+              <Button
+                disabled={isLoading}
+                className={` ${isLoading && "cursor-not-allowed"} mt-6 h-[56px] w-full rounded-full bg-[#FC6060] text-white hover:bg-[#FC6060]/90`}
+              >
+                {isLoading ? (
+                  <Loader className="animate-spin" color="white" />
+                ) : (
+                  "Continue"
+                )}
               </Button>
             </div>
           </form>

@@ -19,11 +19,11 @@ export const columns: ColumnDef<Transactions>[] = [
     header: "Description",
   },
   {
-    accessorKey: "category",
+    accessorKey: "transaction_category",
     header: "Category",
   },
   {
-    accessorKey: "type",
+    accessorKey: "transaction_type",
     header: "Type",
   },
   {

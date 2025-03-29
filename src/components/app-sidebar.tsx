@@ -1,7 +1,6 @@
 import { Sidebar, SidebarTrigger } from "@/components/ui/sidebar";
 import {
   ArrowRightLeft,
-  Building,
   ChartScatter,
   ChevronUp,
   Home,
@@ -28,11 +27,6 @@ const links = [
     icon: LightbulbIcon,
     label: "Business Insights",
     path: "/insights",
-  },
-  {
-    icon: Building,
-    label: "Business Profile",
-    path: "/profile",
   },
   {
     icon: ChartScatter,

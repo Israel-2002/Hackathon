@@ -100,7 +100,7 @@ const SignUpForm = () => {
         </div>
       </div>
 
-      <Button className="h-[56px] w-full rounded-full bg-[#FC6060] text-white hover:bg-[#FC6060]/90">
+      <Button className="mt-6 h-[56px] w-full rounded-full bg-[#FC6060] text-white hover:bg-[#FC6060]/90">
         {isPending ? "Signing up..." : "Sign up"}
       </Button>
 

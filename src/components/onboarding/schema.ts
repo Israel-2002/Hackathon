@@ -10,11 +10,11 @@ export const aboutSchema = z.object({
     .string({ message: "Business type is required" })
     .max(255, "Max length is 255 characters"),
 
-  industry_sector: z.string({ message: "Industry sector is required" }),
+  industry: z.string({ message: "Industry sector is required" }),
 
-  established_date: z.string({ message: "Established date is required" }),
+  registration_date: z.string({ message: "Established date is required" }),
   location: z.string().optional(),
-  number_of_employees: z.string().optional(),
+  no_of_employees: z.string().optional(),
 });
 
 export const financesSchema = z
@@ -41,8 +41,8 @@ export const financesSchema = z
     },
   );
 
-export const fileSchema = z.object({
-  files: z
-    .array(z.instanceof(File))
-    .min(1, "You must upload at least one file."),
-});
+// export const fileSchema = z.object({
+//   files: z
+//     .array(z.instanceof(File))
+//     .min(1, "You must upload at least one file."),
+// });
