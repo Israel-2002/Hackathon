@@ -5,6 +5,9 @@ import { signInSchema } from "@/pages/auth/signin/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "@radix-ui/react-label";
 import { SubmitHandler, useForm } from "react-hook-form";
+import {z} from "zod"
+
+type FormFields = z.infer<typeof signInSchema>
 
 const SignInForm = () => {
   const {
@@ -15,7 +18,7 @@ const SignInForm = () => {
     resolver: zodResolver(signInSchema),
   });
 
-  const onSubmit: SubmitHandler<any> = (data) => {
+  const onSubmit: SubmitHandler<FormFields> = (data) => {
     console.log(data);
   };
 

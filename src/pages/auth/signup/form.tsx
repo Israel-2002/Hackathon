@@ -5,6 +5,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema } from "@/pages/auth/signup/schema";
 import { cn } from "@/lib/utils";
+import { z } from "zod";
+
+type FormFields = z.infer<typeof signUpSchema>;
 
 const SignUpForm = () => {
   const {
@@ -15,7 +18,7 @@ const SignUpForm = () => {
     resolver: zodResolver(signUpSchema),
   });
 
-  const onSubmit: SubmitHandler<any> = (data) => {
+  const onSubmit: SubmitHandler<FormFields> = (data) => {
     console.log(data);
   };
 
