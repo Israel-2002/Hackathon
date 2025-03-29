@@ -10,7 +10,7 @@ import {
   Settings,
 } from "lucide-react";
 import { useState } from "react";
-import { Link, redirect, useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const links = [

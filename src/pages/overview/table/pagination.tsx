@@ -1,6 +1,11 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Table } from "@tanstack/react-table";
 
-export default function Pagination({ table }) {
+interface PaginationProps<TData> {
+  table: Table<TData>;
+}
+
+export default function Pagination<TData>({ table }: PaginationProps<TData>) {
   const { getState, setPageIndex, getPageCount } = table;
   const { pagination } = getState();
   const currentPage = pagination.pageIndex + 1;
