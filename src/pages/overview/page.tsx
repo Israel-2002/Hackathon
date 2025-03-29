@@ -12,6 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Loader } from "lucide-react";
 
 const apiUrl = import.meta.env.VITE_BACKEND_BASE_URL;
+import BarChatComponent from "@/components/charts/bar-chat";
 
 const OverviewPage = () => {
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -75,7 +76,7 @@ const OverviewPage = () => {
         {/* component header */}
         <div className="flex items-center justify-between border-b border-[#D4D4D4] px-6 pt-4 pb-2">
           <div>
-            <h2 className="text-[20px] font-bold text-[#001213]">overview</h2>
+            <h2 className="text-[20px] font-bold text-[#001213]">Overview</h2>
             <p className="text-sm text-[#4D595A]">
               Overview of your business performance and metrics.
             </p>
@@ -90,6 +91,13 @@ const OverviewPage = () => {
           </div>
         </div>
         <Cards overviewData={overview?.data} />
+
+        <div className="grid grid-cols-3 gap-3 px-6">
+          <div className="col-span-2">
+            <BarChatComponent />
+          </div>
+          <div></div>
+        </div>
         <div className="px-6">
           <DataTable
             columns={columns}

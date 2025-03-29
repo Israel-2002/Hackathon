@@ -7,6 +7,9 @@ import { createBrowserRouter, redirect } from "react-router";
 import PageLayout from "./components/page-layout";
 import Transactionspage from "./pages/transactionspage";
 import Reports from "./pages/reports";
+import BusinessInsights from "@/pages/business-insights/business-insights";
+import FinancialMetrics from "@/pages/business-insights/metrics/financial-metrics";
+import AiAnalysis from "@/pages/business-insights/smart-safe-index/ai-analysis";
 
 export const router = createBrowserRouter([
   {
@@ -22,19 +25,34 @@ export const router = createBrowserRouter([
           if (!token) {
             return redirect("/auth/signin");
           }
-
-          return token;
-        },
       },
       {
-        path: "transactions",
-        Component: Transactionspage,
-      },
-      {
-        path: "reports",
-        Component: Reports,
+        path: "insights",
+        Component: BusinessInsights,
+        children: [
+          {
+            index: true,
+            Component: FinancialMetrics,
+          },
+          {
+            path: "business-credibility",
+            Component: AiAnalysis,
+          },
+        ],
       },
     ],
+
+    loader: async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        return redirect("/auth/signin");
+      }
+
+      const userString = localStorage.getItem("user");
+      const user = userString ? JSON.parse(userString) : null;
+
+      return { token, user };
+    },
   },
 
   {
