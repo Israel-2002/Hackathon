@@ -5,6 +5,7 @@ import { signInSchema } from "@/pages/auth/signin/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "@radix-ui/react-label";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { Link } from "react-router";
 
 const SignInForm = () => {
   const {
@@ -67,9 +68,12 @@ const SignInForm = () => {
             </p>
           )}
 
-          <button className="mt-4 text-[#420000] underline">
+          <Link
+            to={"/auth/forgot-password"}
+            className="mt-4 inline-block text-[#420000] underline"
+          >
             Forgot password?
-          </button>
+          </Link>
         </div>
       </div>
 
