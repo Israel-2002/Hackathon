@@ -5,8 +5,8 @@ import { AppSidebar } from "./app-sidebar";
 const PageLayout = () => {
   return (
     <SidebarProvider>
-      <AppSidebar />
-      <main>
+      <main className="flex h-screen w-screen flex-row">
+        <AppSidebar />
         <Outlet />
       </main>
     </SidebarProvider>

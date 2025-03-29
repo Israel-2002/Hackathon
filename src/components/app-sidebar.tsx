@@ -54,7 +54,7 @@ export function AppSidebar() {
   }
 
   return (
-    <Sidebar className="flex w-[240px] flex-col border-r border-[#F5F5F5]">
+    <Sidebar className="flex w-[257px] flex-col">
       {/* header */}
       <div className="flex items-center justify-between px-4 pt-2">
         <div className="flex items-center gap-2">
