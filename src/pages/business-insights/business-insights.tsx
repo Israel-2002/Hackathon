@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
 import Filter from "@/pages/business-insights/filter";
-import { PlusCircle } from "lucide-react";
 import { Outlet } from "react-router";
 
 const BusinessInsights = () => {

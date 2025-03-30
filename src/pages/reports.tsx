@@ -12,57 +12,40 @@ import { DataTable } from "./overview/table/data-table";
 import { columnsReports, Reports } from "@/components/reports-column";
 import { Input } from "@/components/ui/input";
 
-// const apiUrl = import.meta.env.VITE_BACKEND_BASE_URL;
+const apiUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
 export default function ReportsPage() {
   // State for filters
   const [reportType, setReportType] = useState<string>("");
   const [dateFilter, setDateFilter] = useState<string>("");
   const [filteredData, setFilteredData] = useState<Reports[]>([]);
+  const token = localStorage.getItem("token");
 
-  // Dummy data with the correct structure matching your column definitions
-  const [reportsData, setReportsData] = useState<Reports[]>([
-    {
-      id: "1",
-      date: "2025-03-10",
-      description: "Q1 Financial Review",
-      category: "Quarterly",
-      report_type: "profit_loss",
-      type: "profit_loss", // Added this since your columns definition might use it
-      amount: 0,
-    },
-    {
-      id: "2",
-      date: "2025-03-15",
-      description: "Monthly Cash Flow",
-      category: "Monthly",
-      report_type: "cash_flow",
-      type: "cash_flow",
-      amount: 0,
-    },
-    {
-      id: "3",
-      date: "2025-03-20",
-      description: "Expense Summary",
-      category: "Monthly",
-      report_type: "expense",
-      type: "expense",
-      amount: 0,
-    },
-    {
-      id: "4",
-      date: "2025-03-25",
-      description: "Income Report",
-      category: "Monthly",
-      report_type: "income",
-      type: "income",
-      amount: 0,
-    },
-  ]);
+  const [reportsData, setReportsData] = useState([]);
 
   useEffect(() => {
+    if (!reportType) return;
     setFilteredData(reportsData);
-  }, [reportsData]);
+
+    async function getReport() {
+      const res = await fetch(
+        `${apiUrl}/ai_service/generate_report?report_type=${reportType}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      const data = await res.json();
+      console.log(data);
+      setReportsData(data.data);
+    }
+
+    getReport();
+  }, [reportType]);
 
   useEffect(() => {
     let result = [...reportsData];
