@@ -3,7 +3,7 @@ import Cards from "@/pages/business-insights/metrics/cards";
 
 const FinancialMetrics = () => {
   return (
-    <div className="mt-6 grid grid-cols-2 items-start gap-6 px-6">
+    <div className="mt-6 grid grid-cols-2 items-start gap-6 px-6 pb-10">
       <Cards />
       <Analytics />
     </div>

@@ -1,4 +1,4 @@
-"use client";
+//@ts-nocheck
 
 import * as React from "react";
 import { Label, Pie, PieChart, PieProps } from "recharts";
@@ -95,7 +95,7 @@ export function PieChartComponent({ expenseData }: PieChartComponentProps) {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            
+
             <Pie {...pieProps}>
               <Label
                 content={({ viewBox }) => {

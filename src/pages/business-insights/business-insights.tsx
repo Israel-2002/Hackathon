@@ -15,11 +15,6 @@ const BusinessInsights = () => {
             Smart recommendations to improve your financial health
           </p>
         </div>
-
-        <Button className="rounded-full bg-[#FC6060] px-4 py-2.5 text-white hover:bg-[#FC6060]/90">
-          <PlusCircle className="h-4 w-4" />
-          Add transaction
-        </Button>
       </div>
 
       <Filter />

@@ -63,7 +63,7 @@ export function DataTable<TData, TValue>({
           />
         </div>
       )}
-      <div className="mt-2 rounded-md border">
+      <div className="mt-2 mb-10 rounded-md border">
         {showRecent && (
           <div className="mb-2 flex items-center justify-between border-b p-2">
             <div className="text-[#404040]">

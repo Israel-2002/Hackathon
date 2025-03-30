@@ -27,7 +27,7 @@ const AiAnalysis = () => {
   });
 
   return (
-    <div className="px-6">
+    <div className="px-6 pb-10">
       <div className="mt-6 items-start gap-6 rounded-t-[8px] border border-[#F0F0F0] px-6 py-5">
         <h3 className="font-semibold text-[#404040]">Smart Safe Index</h3>
       </div>

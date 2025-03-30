@@ -1,5 +1,3 @@
-import { MoveUpRight } from "lucide-react";
-
 const Cards = ({
   // @ts-expect-error "hello"
   overviewData,

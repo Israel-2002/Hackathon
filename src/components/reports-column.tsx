@@ -21,7 +21,7 @@ export const columnsReports: ColumnDef<Reports>[] = [
   },
   {
     accessorKey: "id",
-    header: () => <div className="mr-3 text-right">Action</div>,
+    header: () => <div className="mr-3">Action</div>,
     cell: ({ row }) => {
       const id = row.original.id;
       return (

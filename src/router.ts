@@ -5,10 +5,10 @@ import OverviewPage from "@/pages/overview/page";
 import { createBrowserRouter, redirect } from "react-router";
 import PageLayout from "./components/page-layout";
 import Transactionspage from "./pages/transactionspage";
-import Reports from "./pages/reports";
 import BusinessInsights from "@/pages/business-insights/business-insights";
 import FinancialMetrics from "@/pages/business-insights/metrics/financial-metrics";
 import AiAnalysis from "@/pages/business-insights/smart-safe-index/ai-analysis";
+import ReportsPage from "./pages/reports";
 
 export const router = createBrowserRouter([
   {
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "reports",
-        Component: Reports,
+        Component: ReportsPage,
       },
       {
         path: "insights",
