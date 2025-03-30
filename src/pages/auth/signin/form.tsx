@@ -4,9 +4,19 @@ import { cn } from "@/lib/utils";
 import { signInSchema } from "@/pages/auth/signin/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "@radix-ui/react-label";
-import { SubmitHandler, useForm } from "react-hook-form";
+import axios, { AxiosError } from "axios";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
+import { z } from "zod";
+
+const apiUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
 const SignInForm = () => {
+  const [isPending, setIsPending] = useState(false);
+  const navigate = useNavigate();
+
   const {
     handleSubmit,
     register,
@@ -15,8 +25,30 @@ const SignInForm = () => {
     resolver: zodResolver(signInSchema),
   });
 
-  const onSubmit: SubmitHandler<any> = (data) => {
-    console.log(data);
+  const onSubmit = async (user: z.infer<typeof signInSchema>) => {
+    try {
+      setIsPending(true);
+      const { data } = await axios.post(`${apiUrl}/auth/signin`, user, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      localStorage.setItem("token", data.data.token);
+      localStorage.setItem("user", JSON.stringify(data.data.user));
+
+      navigate("/");
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.log(error.response?.data);
+        toast(
+          error?.response?.data?.userMsg ??
+            error?.response?.data?.detail ??
+            "An unexpected error occurred.",
+        );
+      }
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -67,14 +99,17 @@ const SignInForm = () => {
             </p>
           )}
 
-          <button className="mt-4 text-[#420000] underline">
+          <Link
+            to={"/auth/forgot-password"}
+            className="mt-4 inline-block text-[#420000] underline"
+          >
             Forgot password?
-          </button>
+          </Link>
         </div>
       </div>
 
       <Button className="h-[56px] w-full rounded-full bg-[#FC6060] text-white hover:bg-[#FC6060]/90">
-        Sign in
+        {isPending ? "Signing in..." : "Sign in"}
       </Button>
     </form>
   );
