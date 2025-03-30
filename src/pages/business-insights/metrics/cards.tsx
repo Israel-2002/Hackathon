@@ -6,7 +6,7 @@ const Cards = () => {
 
         <div className="flex items-center">
           <span className="-mt-2 gap-2 font-semibold">GHS</span>
-          <h3 className="text-[2rem] font-bold">4000</h3>
+          <h3 className="text-[2rem] font-bold">4600</h3>
         </div>
       </div>
 
@@ -15,7 +15,7 @@ const Cards = () => {
 
         <div className="flex items-center">
           <span className="-mt-2 gap-2 font-semibold">GHS</span>
-          <h3 className="text-[2rem] font-bold">4000</h3>
+          <h3 className="text-[2rem] font-bold">3200</h3>
         </div>
       </div>
 
@@ -24,7 +24,7 @@ const Cards = () => {
 
         <div className="flex items-center">
           <span className="-mt-2 gap-2 font-semibold">GHS</span>
-          <h3 className="text-[2rem] font-bold">4000</h3>
+          <h3 className="text-[2rem] font-bold">2000</h3>
         </div>
       </div>
 
@@ -33,7 +33,7 @@ const Cards = () => {
 
         <div className="flex items-center">
           <span className="-mt-2 gap-2 font-semibold">GHS</span>
-          <h3 className="text-[2rem] font-bold">4000</h3>
+          <h3 className="text-[2rem] font-bold">4500</h3>
         </div>
       </div>
     </div>

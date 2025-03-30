@@ -10,26 +10,20 @@ export const FILTERS = [
     route: "business-credibility",
   },
 ];
-
 export const GROWTH_RECOMMENDATION = [
   {
     title: "Expand Digital Marketing Channels",
     description:
-      "Improve liquidity by maintaining a current ratio of 1.5, keeping adequate cash reserves, and ensuring timely payment of bills.",
+      "Boost online presence through social media, SEO, and other digital channels to attract more customers.",
   },
   {
-    title: "Capital Structure Optimisation",
+    title: "Capital Structure Optimization",
     description:
-      "Optimise capital structure by maintaining a debt-to-equity ratio of 0.6 and ensuring a sufficient cash reserve of at least 3 months' expenses.",
+      "Balance debt and equity, keeping reserves for at least 3 months of expenses to ensure financial stability.",
   },
   {
-    title: "Profitability Enhancements",
+    title: "Enhance Profitability",
     description:
-      "Improve liquidity by maintaining a current ratio of 1.5, keeping adequate cash reserves, and ensuring timely payment of bills.",
-  },
-  {
-    title: "Profitability Enhancements",
-    description:
-      "Improve liquidity by maintaining a current ratio of 1.5, keeping adequate cash reserves, and ensuring timely payment of bills.",
+      "Increase profit margins by managing costs and improving cash flow through efficient billing and budgeting.",
   },
 ];
