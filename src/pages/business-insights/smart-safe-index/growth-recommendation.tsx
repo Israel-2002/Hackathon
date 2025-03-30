@@ -1,6 +1,27 @@
 import { GROWTH_RECOMMENDATION } from "@/pages/business-insights/constants";
+import { useQuery } from "@tanstack/react-query";
 
 const GrowthRecommendation = () => {
+  const apiUrl = import.meta.env.VITE_BACKEND_BASE_URL;
+  const token = localStorage.getItem("token");
+
+  const { data } = useQuery({
+    queryKey: ["business", "recommendations"],
+    queryFn: async () => {
+      const res = await fetch(`${apiUrl}/ai_service/recommendations`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return res.json();
+    },
+  });
+
+  console.log(data);
+
   return (
     <ul className="grid gap-4 pb-20">
       {GROWTH_RECOMMENDATION.map(({ title, description }, i) => (

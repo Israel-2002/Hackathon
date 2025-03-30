@@ -47,7 +47,11 @@ export default function ReportsPage() {
     getReport();
   }, [reportType]);
 
+  console.log(reportsData);
+
   useEffect(() => {
+    return;
+
     let result = [...reportsData];
 
     if (reportType) {

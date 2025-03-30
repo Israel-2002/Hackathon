@@ -44,7 +44,12 @@ export default function BarChatComponent() {
     },
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <div className="mx-auto w-fit py-20">
+        <span className="loader"></span>
+      </div>
+    );
 
   const result = isSuccess
     ? Object.keys({ ...data.data }).map((month) => ({
@@ -53,8 +58,6 @@ export default function BarChatComponent() {
         expenses: data.data[month].expenses,
       }))
     : [];
-
-  console.log(data);
 
   return (
     <Card className="rounded-none border-0 shadow-none">
